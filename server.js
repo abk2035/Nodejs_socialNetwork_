@@ -1,16 +1,24 @@
 const express = require('express');
 require('./config/db');
 const bodyParser=require('body-parser');
+const cookieParser= require('cookie-parser');
 const app=express() ;
 const userRoutes=require('./routes/user.routes');
+const { checkUser, requireAuth } = require('./middleware/auth.middleware');
 
 app.use(express.json());
+app.use(cookieParser());
 //app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({ extended:true }));
 
-//routes
-app.use('/api/user',userRoutes)
+//jwt  middleware
+app.get("*",checkUser);
+app.get("/jwtid",requireAuth,(req,res,next)=>{
+    res.status(200).send(res.locals.user._id);
+});
 
+//routes
+app.use('/api/user',userRoutes);
 
 
 //server

@@ -48,7 +48,10 @@ mongoose
 
 
 //don't pay attentio
-/*PORT=6000
+/*
+PORT=6000
 MONGO_USERNAME=abk
 MONGO_PASSWORD=abk237
-MONGO_HOST= cluster0.wjz5dxo.mongodb.net/social_network_project?retryWrites=true&w=majority */
+MONGO_HOST= cluster0.wjz5dxo.mongodb.net/social_network_project?retryWrites=true&w=majority 
+SECRET_TOKEN= F216F4CDCBD7348F7C669D982CC5824$#$%sdfk{{sd}}
+*/

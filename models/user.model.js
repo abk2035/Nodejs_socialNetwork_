@@ -50,13 +50,29 @@ const userSchema = new mongoose.Schema(
 );
 
 // play function before save 
-userSchema.pre('save',async function(next){
-     const salt = await bcrypt.genSalt();
-     this.password= bcrypt.hash(this.password,salt);
+userSchema.pre('save',async function(next) {
+     const salt = await bcrypt.genSaltSync(10); 
+     this.password= bcrypt.hashSync(this.password,salt);
      next();
 });
+
+userSchema.statics.login= async function(email , password){
+  const user= await this.findOne({ email:email });
+   
+   if(user){
+     const auth = await bcrypt.compareSync(password,user.password);
+     if(auth){
+      console.log("execution de login function");
+
+       return user ;
+     }
+     throw Error("incorrect password");
+
+   }throw Error("incorrect email");
+
+}
 
 
 const UserModel = mongoose.model("users", userSchema);
 
-module.exports = UserModel;
+module.exports = UserModel; 
