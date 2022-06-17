@@ -4,6 +4,7 @@ const bodyParser=require('body-parser');
 const cookieParser= require('cookie-parser');
 const app=express() ;
 const userRoutes=require('./routes/user.routes');
+const postRoutes=require('./routes/post.route');
 const { checkUser, requireAuth } = require('./middleware/auth.middleware');
 
 app.use(express.json());
@@ -19,7 +20,7 @@ app.get("/jwtid",requireAuth,(req,res,next)=>{
 
 //routes
 app.use('/api/user',userRoutes);
-
+app.use('/api/post',postRoutes);
 
 //server
 const PORT=process.env.PORT;

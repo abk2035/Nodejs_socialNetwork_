@@ -39,12 +39,13 @@ console.log("start authRequire..");
          if(err){
              console.log("erreur....");
          }else{
-             console.log("success...")
+             console.log("success...");
              next();
          }
       })
     }else{
     console.log('No token'); 
+    res.send('No token');
   }
 
 

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { isEmail } = require('validator');
 const bcrypt = require('bcrypt');
+uniqueValidator = require('mongoose-unique-validator');
 
 const userSchema = new mongoose.Schema(
   {
@@ -24,7 +25,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       max: 1024,
-      minlength: 6
+      minLength: 6
     },
     picture: {
       type: String,
@@ -48,7 +49,8 @@ const userSchema = new mongoose.Schema(
     timestamps: false,
   }
 );
-
+//
+userSchema.plugin(uniqueValidator);
 // play function before save 
 userSchema.pre('save',async function(next) {
      const salt = await bcrypt.genSaltSync(10); 
@@ -57,18 +59,18 @@ userSchema.pre('save',async function(next) {
 });
 
 userSchema.statics.login= async function(email , password){
-  const user= await this.findOne({ email:email });
-   
-   if(user){
+  
+  const user = await this.find({ email },(err,docs)=>{if(docs) return docs });
+                                
+  console.log("user is :"+user);
+   if(!user==null){
      const auth = await bcrypt.compareSync(password,user.password);
      if(auth){
       console.log("execution de login function");
-
        return user ;
-     }
-     throw Error("incorrect password");
+     } throw  new Error("incorrect password")
 
-   }throw Error("incorrect email");
+   }throw  new Error("incorrect email") 
 
 }
 
