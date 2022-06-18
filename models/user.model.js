@@ -60,17 +60,16 @@ userSchema.pre('save',async function(next) {
 
 userSchema.statics.login= async function(email , password){
   
-  const user = await this.find({ email },(err,docs)=>{if(docs) return docs });
-                                
+  const user = await this.findOne({ email });                             
   console.log("user is :"+user);
-   if(!user==null){
+   if(user!==null){
      const auth = await bcrypt.compareSync(password,user.password);
-     if(auth){
-      console.log("execution de login function");
-       return user ;
-     } throw  new Error("incorrect password")
+      if(auth){
+        console.log("execution de login function");
+        return user ;
+     }throw new Error("incorrect password") 
 
-   }throw  new Error("incorrect email") 
+   }throw new Error("incorrect email") 
 
 }
 

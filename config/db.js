@@ -47,9 +47,10 @@ mongoose
 
 
 
-//don't pay attentio
+//don't pay attention
 /*
 PORT=6000
+CLIENT_URL = http://localhost:3000
 MONGO_USERNAME=abk
 MONGO_PASSWORD=abk237
 MONGO_HOST= cluster0.wjz5dxo.mongodb.net/social_network_project?retryWrites=true&w=majority 

@@ -1,6 +1,7 @@
 const UserModel= require('../models/user.model')
 const jwt = require('jsonwebtoken'); 
-const{signUpErrors} = require('../utils/errors.utils')
+const{signUpErrors} = require('../utils/errors.utils');
+const {signInErrors}= require('../utils/errors.utils');
 
 const maxAge = 3 * 24 * 60 * 60 * 1000;
 const createToken = (id)=>{
@@ -40,7 +41,8 @@ module.exports.signIn =async (req,res)=>{
            return  res.status(200).json({user :user._id});
       }catch(err){
             console.log('erreur...')
-            return res.status(200).json({message:err});
+            const errors= signInErrors(err);
+            return res.status(500).json({errors}); 
             
       }
 
