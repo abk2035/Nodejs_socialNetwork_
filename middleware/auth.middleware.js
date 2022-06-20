@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken");
-const UserModel=require('../models/user.model');
+const UserModel = require("../models/user.model")
+
+
 
 
 module.exports.checkUser= (req,res,next)=>{
@@ -11,7 +13,6 @@ try{
         console.log("pas de toke...");
          res.locals.user=null;
          res.cookie("jwt",'',{maxAge:1});
-         
          next();
      }else{
          console.log('user have toke....')
@@ -26,9 +27,9 @@ try{
        next();
    }
 
-};
+}
 
-module.exports.requireAuth= (req,res,next)=>{
+module.exports.requireAuth=(req,res,next)=>{
 
 
 console.log("start authRequire..");

@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-require('dotenv').config({path:'./config/.env'});
+
 
 const MONGO_USERNAME=process.env.MONGO_USERNAME;
 const MONGO_PASSWORD=process.env.MONGO_PASSWORD
 const MONGO_HOST=process.env.MONGO_HOST
 mongoose
-  .connect(
+.connect(
     "mongodb+srv://"+MONGO_USERNAME+":"+MONGO_PASSWORD+"@"+MONGO_HOST,
     {
       useNewUrlParser: true,
@@ -15,7 +15,7 @@ mongoose
     }
   )
   .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.log("Failed to connect to MongoDB", err));
+  .catch((err) => console.log("Failed to connect to MongoDB", err)); 
   
 
 
