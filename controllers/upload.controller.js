@@ -7,16 +7,15 @@ const multer = require ('multer');
 const { uploadErrors } = require("../utils/errors.utils");
 
 module.exports.uploadProfil= async(req,res ,next)=>{
-    const fileName = req.body.name + ".jpg"; 
-   
+       //let fileName = "";
     //setting of multer storage
     const Storage = multer.diskStorage(
-         {
-         destination: './client/public/uploads/profil',
-         filename: (req,file,cb)=>{
-            cb (null,file.originalname)
-         }
-       });
+        {
+        destination: './client/public/uploads/profil',
+        filename: (req,file,cb)=>{
+           cb (null,file.originalname)
+        }
+      });
     //setting of multer filter
    // this code goes inside the object fileFilter passed to multer()
     function checkfiletype ( file, cb) {    
@@ -35,17 +34,22 @@ module.exports.uploadProfil= async(req,res ,next)=>{
       }
     }
     const upload= multer({storage:Storage,
-                          fileFilter: function(req,file,cb){ checkfiletype(file,cb) ;},
+                          fileFilter: function(reqq,file,cb){ checkfiletype(file,cb) ;},
                           limits : {fileSize:1000000}	         
                            }).single('file');  
     
     upload(req,res ,(err) => {
+        //fileName = req.body.name + ".jpg";       
         if(err) {
          const errors= uploadErrors(err);
          return res.status(400).json({errors});
         }
+        console.log(req.file,fileName);
         next();
       }); 
+
+
+  
    
     }
     /*try{
@@ -80,4 +84,51 @@ module.exports.uploadImageInDB= (req,res)=>{
 
             return res.status(500).send({ message: err }); 
         }
+ }
+
+
+ // upload image of post
+
+ module.exports.uploadPost= async(req,res ,next)=>{
+
+        //setting of multer storage
+    const Storage = multer.diskStorage(
+        {
+        destination: './client/public/uploads/posts',
+        filename: (req,file,cb)=>{
+            cb (null, Date.now()+"-" + file.originalname )
+        }
+    });
+    //setting of multer filter
+    
+    // this code goes inside the object fileFilter passed to multer()
+    function checkfiletype ( file, cb) {    
+        // Allowed ext
+        const filetypes = /jpeg|jpg|png|gif/;
+    
+    // Check ext
+        const extname =  filetypes.test(file.originalname.toLowerCase());
+    // Check mime
+    const mimetype = filetypes.test(file.mimetype);
+    
+    if(mimetype && extname){
+        cb(null,true);
+    } else {
+        cb(new Error('Images Only'));
+    }
+    }
+    const upload= multer({storage:Storage,
+                        fileFilter: function(reqq,file,cb){ checkfiletype(file,cb) ;},
+                        limits : {fileSize:1000000}	         
+                            }).single('file');  
+    
+    upload(req,res ,(err) => {
+        if(err) {
+        const errors= uploadErrors(err);
+        return res.status(400).json({errors});
+        }
+        console.log(req.file);
+        next();
+    }); 
+
  }
