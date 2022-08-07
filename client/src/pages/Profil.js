@@ -2,6 +2,9 @@ import React from 'react';
 import Log from '../components/Log'
 import { useContext } from 'react';
 import { UidContext } from '../components/Routes/AppContext';
+import UpdateProfil from '../components/Profil/UpdateProfil';
+
+
 
 const Profil = ()=>{
  const uid =useContext(UidContext);
@@ -17,7 +20,6 @@ const Profil = ()=>{
            <Log signin={false} signUp={true}/>
            <div className='img-container'>
                <img src="./img/log.svg" alt="img-logo"/>
-               sdfsd
            </div>
        </div>
      )}

@@ -1,14 +1,18 @@
 import React from "react";
+import  { useState }from "react";
 import axios from "axios";
 
 
-const SignupForm =(props)=>{
+const SignupForm = () =>{
     const [pseudo, setPseudo] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [formSubmit, setFormSubmit] = useState(false);
     const [controlPassword, setControlPassword] = useState("");
+   
+    const handleRegister= ()=>{
 
+    }
 
     return (
 
@@ -72,5 +76,7 @@ const SignupForm =(props)=>{
     )
 
 }
+
+
 
 export default SignupForm ;

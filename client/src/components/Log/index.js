@@ -1,5 +1,5 @@
-import React ,{useState} from "react";
-import SigninForm from "./SignInForm";
+import React, { useState } from "react";
+import SigninForm from "./SigninForm";
 import SignupForm from "./SignupForm"
 
 
@@ -16,31 +16,22 @@ const Log=(props)=>{
           setSignInModal(true);
         }
       };
-
-    <div className="connection-form">
-      <div className="form-container">
-         <ul>
-            <li onClick={handleModal} id="register" className={signUpModal?"active-btn" :null}>
-                S'inscrire
-            </li>
-            <li onClick={handleModal} id="login" className={signInModal ?"active-btn":null}>
-                Se connecter
-            </li>
-            {signInModal&&<SignupForm/>}
-            {signUpModal&&<SigninForm/>}
-         </ul>
+ return(
+      <div className="connection-form">
+        <div className="form-container">
+          <ul>
+              <li onClick={handleModal} id="register" className={signUpModal?"active-btn" :null}>
+                  S'inscrire
+              </li>
+              <li onClick={handleModal} id="login" className={signInModal ?"active-btn":null}>
+                  Se connecter
+              </li>
+              {signUpModal&&<SignupForm/>}
+              {signInModal&&<SigninForm/>}
+          </ul>
+        </div>
       </div>
-     </div>
-
-
-
-
-
-
-
-
-
-
+      )
 }
 
 export default Log;
