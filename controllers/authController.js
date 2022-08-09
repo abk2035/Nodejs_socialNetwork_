@@ -25,7 +25,7 @@ module.exports.signUp= async (req,res)=>{
             res.status(201).json({user: user._id});
       }catch(err){
       const errors = signUpErrors(err.errors);
-      res.status(200).send(errors);
+      res.status(200).send({ errors });
       console.log("erreur " + Object.keys(err.errors).includes('pseudo'));
       }
 }

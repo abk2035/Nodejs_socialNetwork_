@@ -1,5 +1,5 @@
 module.exports.signUpErrors= (err)=>{
-    let errors={};
+    let errors={pseudo:'',password:'',email:''};
 
   if(Object.keys(err).includes('pseudo')){
       if(err.pseudo['kind']== 'unique') errors.pseudo="Pseudo deja pris"; 
