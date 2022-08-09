@@ -8,39 +8,38 @@ const SigninForm = (props)=>{
   const[password,setPassword]=useState('');
   
   const emailErrors=document.querySelector('.email.error');
-  const passwordErrors= document.querySelector('.password.errors');
+  const passwordErrors= document.querySelector('.password.error');
 
-    const handleLogin =(e)=>{
+    const  handleLogin = async (e)=>{
             e.preventDefault();
            
-            axios({
-                method:"post",
-                url:process.env.REACT_APP__API_URL+"api/user/login",
-                withCredentials:true,
-                data:{
-                    email,
-                    password
-                }
-            }).then((res)=>{
-                console(res);
-                if(res.data.errors){
-                    emailErrors.innerHTML=res.data.errors.email;
-                    passwordErrors.innerHTML=res.data.errors.password;
+            try{
+                    
+                    let res =await axios.post(
+                    `${process.env.REACT_APP_API_URL}api/user/login`,  
+                     { email, password },
+                     {headers:{"Content-Type" : "application/json"}}
+                    );
 
-                }else{
-                    window.location='/';
-                }
-            }).catch((err)=>console.log(err))
-          
+                    if(res.data.errors){
+                        emailErrors.innerHTML= res.data.errors.email;
+                        passwordErrors.innerHTML= res.data.errors.password;
 
+                    }else{
+                        window.location='/';
+                    }
 
+                }catch(error){
+                    console.log("erreur "+ error);
+                   }
+            
     }
 
     return (
 
-        <form  onSubmit={handleLogin} id="sign-up-form">
+        <form action="" onSubmit={ handleLogin } id="sign-up-form">
             <label htmlFor="email">Email</label>
-            <br/>
+            <br/> 
             <input 
             type="text"
             name="email"
@@ -50,18 +49,18 @@ const SigninForm = (props)=>{
             />
             <div className="email error"></div>
             <br/>
-            <label htmlFor="passWord">mot de passe </label>
+            <label htmlFor="password">mot de passe </label>
             <br/>
             <input 
             type="text"
             name="password"
             id="password"
-            value={password}
+            value={ password }
             onChange={(e)=> setPassword(e.target.value)}
             />
             <div className="password error"></div>
             <br/>
-            <input type="submit" value="Se connecter"/>
+            <input type="submit" value="Se connecter" />
         </form>
     )
 

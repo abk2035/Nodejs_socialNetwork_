@@ -39,10 +39,10 @@ module.exports.signIn =async (req,res)=>{
 
            return  res.status(200).json({user :user._id});
       }catch(err){
-            console.log('erreur...')
+            console.log('erreur... de signIn')
             const errors= signInErrors(err);
-            return res.status(500).json({errors}); 
-            
+            console.log({errors});
+            return res.status(200).json({ errors });    
       }
 
 }

@@ -34,6 +34,7 @@
 
    
   }
+
   .connection-form  .form-container {
     display: grid;
     grid-template-columns: 30% 70%;
@@ -44,6 +45,7 @@
 
   }
 
+  .connection-form 
   .form-container form input {
     
       padding: 14px 20px;
@@ -58,7 +60,7 @@
     color: rgb(62, 62, 214);
   }
 
-  .form-container form input :focus {
+  .form-container form input:focus {
     box-shadow: 0 0 3px rgba(51, 51, 51, 0.2);
   }
 
@@ -78,7 +80,7 @@
     background: var(--color-1);
   }
 
-  .form-container ul .active-btn :hover {
+  .form-container ul .active-btn:hover {
     background: var(--color-2);
   }
 
@@ -95,7 +97,6 @@
       @media screen and(max-width: 550px) {
         margin-bottom: 30px;
       }
-      
     
   }
 
@@ -202,9 +203,9 @@
         cursor: pointer;
       }
 
-      .update-container 
-      .left-part form 
-      input[type="file"]{
+.update-container 
+.left-part form 
+ input[type="file"]{
     
          
            
@@ -233,8 +234,6 @@
     letter-spacing: 1px;
   }
   
-  
-
   .update-container 
   .left-part 
    p {
@@ -279,11 +278,13 @@
     margin: 5px 0;
     float: right;
   }
+
   .update-container 
   .right-part
   h4 {
     margin: 60px 0 10px;
   }
+  
   .update-container 
   .right-part h5  {
     

@@ -5,7 +5,7 @@ const Trending= ()=>{
 
 
   return(
-    <div>
+    <div className='trending-page'>
       hello trending
     </div>
   );

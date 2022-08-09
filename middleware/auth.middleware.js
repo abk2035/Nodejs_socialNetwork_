@@ -46,7 +46,7 @@ console.log("start authRequire..");
       })
     }else{
     console.log('No token'); 
-    res.send('No token');
+    res.json(0);
   }
 
 

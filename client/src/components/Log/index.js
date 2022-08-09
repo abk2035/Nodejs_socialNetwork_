@@ -26,9 +26,10 @@ const Log=(props)=>{
               <li onClick={handleModal} id="login" className={signInModal ?"active-btn":null}>
                   Se connecter
               </li>
+              
+          </ul>
               {signUpModal&&<SignupForm/>}
               {signInModal&&<SigninForm/>}
-          </ul>
         </div>
       </div>
       )

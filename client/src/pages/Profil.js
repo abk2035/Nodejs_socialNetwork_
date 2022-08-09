@@ -13,7 +13,7 @@ const Profil = ()=>{
   return(
     <div className="profil-page">
       {
-        uid?
+        uid ?
          (<UpdateProfil/>):
       
       ( <div className="log-container">
@@ -22,7 +22,7 @@ const Profil = ()=>{
                <img src="./img/log.svg" alt="img-logo"/>
            </div>
        </div>
-     )}
+       )}
     </div>
   );
 }

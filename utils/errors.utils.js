@@ -19,7 +19,7 @@ module.exports.signUpErrors= (err)=>{
 
 // error for signIn
 module.exports.signInErrors = (err) => {
-  let errors = {}
+  let errors = { email:'',password:'' }
 
   if (err.message.includes("incorrect email")) 
     errors.email = "Email inconnu";
