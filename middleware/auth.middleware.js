@@ -8,7 +8,7 @@ module.exports.checkUser= (req,res,next)=>{
 console.log('startSessio....')
 try{
     const token = req.cookies.jwt;
-    jwt.verify(token,process.env.SECRET_TOKEN,async (err,decodedToken)=>{
+    jwt.verify(token, process.env.SECRET_TOKEN, async (err,decodedToken)=>{
      if(err){
         console.log("pas de toke...");
          res.locals.user=null;

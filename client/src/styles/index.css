@@ -2,4 +2,6 @@
 @import './pages/_home.css';
 @import './pages/_profil.css';
 @import './pages/_trending.css';
+@import './components/_navbar.css';
+
 

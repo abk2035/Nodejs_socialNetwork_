@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import  axios from "axios";
+import Cookies from "js-cookie";
 
 
 const SigninForm = (props)=>{
@@ -26,6 +27,10 @@ const SigninForm = (props)=>{
                         passwordErrors.innerHTML= res.data.errors.password;
 
                     }else{
+                        //set token in cookies
+                        Cookies.set('jwt',res.data.token,{ expires:3 * 24 * 60 * 60 * 1000 })
+                    
+                        //reirect
                         window.location='/';
                     }
 
