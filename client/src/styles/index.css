@@ -3,5 +3,8 @@
 @import './pages/_profil.css';
 @import './pages/_trending.css';
 @import './components/_navbar.css';
-
+@import './components/_leftNav.css';
+@import './components/_newPostForm.css';
+@import './components/_friendsHint.css';
+@import './components/_trends.css';
 

@@ -8,6 +8,7 @@ export default function Logout() {
     const removeCookie = (key) => {
       if (window !== "undefined") {
         cookie.remove(key, { expires: 1 });
+        window.location="/";
       }
     };
 
