@@ -14,7 +14,7 @@ const Profil = ()=>{
     <div className="profil-page">
       {
         uid ?
-         (<UpdateProfil/>):
+      (<UpdateProfil />):
       
       ( <div className="log-container">
            <Log signin={false} signUp={true}/>

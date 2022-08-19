@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema(
       maxLength: 55,
       unique: true,
       trim: true
-    },
+    }, 
     email: {
       type: String,
       required: true,
@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema(
     }
   },
   {
-    timestamps: false,
+    timestamps: true,
   }
 );
 //

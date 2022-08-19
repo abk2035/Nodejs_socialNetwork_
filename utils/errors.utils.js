@@ -22,11 +22,14 @@ module.exports.signInErrors = (err) => {
   let errors = { email:'',password:'' }
 
   if (err.message.includes("incorrect email")) 
-    errors.email = "Email inconnu";
-  
-  if (err.message.includes("incorrect password"))
-    errors.password = "Le mot de passe ne correspond pas"
-
+   { errors.email = "Email inconnu"; 
+  }else if(err.message.includes("incorrect password"))
+    {
+      errors.password = "Le mot de passe ne correspond pas"
+    }else{
+      errors.other=" something was wrong";
+    }
+    
   return errors;
 }
 

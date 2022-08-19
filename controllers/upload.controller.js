@@ -44,7 +44,7 @@ module.exports.uploadProfil= async(req,res ,next)=>{
          const errors= uploadErrors(err);
          return res.status(400).json({errors});
         }
-        console.log(req.file,fileName);
+        console.log(req.file.originalname);
         next();
       }); 
 
@@ -73,9 +73,9 @@ module.exports.uploadImageInDB= (req,res)=>{
         try{
         UserModel.findByIdAndUpdate(
             req.body.userId,
-            { $set : {picture: "./uploads/profil/" + req.body.name +".jpg"}},
-            {new:true,upsert:true,setDefaultsOnInsert:true},
-        (err,docs) => {
+            { $set : {picture: "./uploads/profil/" + req.file.originalname}},
+            { new:true, upsert:true, setDefaultsOnInsert : true },
+            (err,docs) => {
                 if(!err) return res.send(docs);
                 else return res.status(500).send(err);
             }

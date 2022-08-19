@@ -19,8 +19,8 @@ router.patch('/follow/:id',userController.follow);
 router.patch('/unfollow/:id', userController.unfollow);
 
  
-// upload
-router.post("/upload",uploadController.uploadProfil,uploadController.uploadImageInDB);
+// upload post
+router.post("/upload",uploadController.uploadProfil, uploadController.uploadImageInDB);
 
  
 

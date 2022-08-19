@@ -52,7 +52,7 @@ a:hover{
 
 .left-nav-container .icons
 .icons-bis
-a :hover::before {
+a:hover::before {
     transform: scale(1);
     @media screen and(max-width: 590px) {
       background: $color-1;
@@ -79,13 +79,13 @@ a img{
 
 .left-nav-container .icons
 .icons-bis
-.active-left-nav ::after{
+.active-left-nav::after{
           content: "";
           height: 40px;
           width: 5px;
           position: absolute;
           background: var(--color-1);
-          left: -7px;
+          left:-7px;
           bottom: 8px;
           border-radius: 40px;
           transform: scaleY(0);

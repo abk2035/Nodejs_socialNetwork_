@@ -7,7 +7,7 @@ const maxAge = 3 * 24 * 60 * 60 * 1000;
 const createToken = (id)=>{
       console.log("create toke");
       return jwt.sign({id}, process.env.SECRET_TOKEN ,{ expiresIn : maxAge })
-}
+} 
 
 
 
