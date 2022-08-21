@@ -20,17 +20,17 @@ export const userReducer = createSlice({
                   return { ...state, userData : newUser }
                 },
                 follow_user : (state,action) => {
-                  const { userData : { followers } } = state ;
-                  const newFollowers = [...followers, action.payload];
+                  const { userData : { following } } = state ;
+                  const newFollowing = [...following, action.payload];
 
-                   return {...state, userData: {...state.userData,   followers : newFollowers } } 
+                   return {...state, userData: {...state.userData,   following : newFollowing } } 
                },
 
                 unFollow_user : (state, action) => {
-                  const { userData : { followers } } = state ;
-                  const newFollowers = followers.filter( (id) => id !== action.payload.idToUnfollow );
+                  const { userData : { following } } = state ;
+                  const newFollowing = following.filter( (id) => id !== action.payload );
                  
-                  return {...state, userData: {...state.userData,   followers : newFollowers } } 
+                  return {...state, userData: {...state.userData,   following : newFollowing } } 
 
                }
 
