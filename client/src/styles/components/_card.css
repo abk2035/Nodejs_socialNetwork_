@@ -12,7 +12,8 @@
 
   @media screen and(max-width: 590px) {
     grid-template-columns: 1fr;
-  }
+  };
+
   @media screen and(max-width: 440px) {
     padding-top: 26px;
   }
@@ -66,6 +67,8 @@ img {
     justify-content: space-between;
     margin: 2px 0 4px;
     min-height: 35px;
+  
+
 
     @media screen and(max-width: 590px) {
       margin: 12px 0 14px;
@@ -192,8 +195,8 @@ textarea {
 .card-container 
 .card-right 
 .update-post
-.button-container .btn 
-:hover {
+.button-container 
+.btn:hover {
   background: var(--color-1);
   width: 250px;
   letter-spacing: 1px;
@@ -279,7 +282,7 @@ img
 .card-footer {
   display: flex;
   align-items: center;
-  justify-content: center;
+  /*justify-content: center;*/
   justify-content: space-between;
   padding: 12px 0 4px;
 }
@@ -288,7 +291,11 @@ img
 .card-container 
 .card-right 
 .card-footer
-.comment-icon,
+.comment-icon{
+  display: flex;
+  align-items: center;
+}
+
 .card-container 
 .card-right 
 .card-footer
@@ -297,10 +304,10 @@ img
   align-items: center;
 }
 
-.card-container 
+/*.card-container 
 .card-right 
 .card-footer
-.comment-icon,
+.comment-icon,*/
 .card-container 
 .card-right 
 .card-footer
@@ -313,7 +320,8 @@ span {
 
 .card-container 
 .card-right
-.comment-container.client {
+.comment-container 
+.client {
   background: var(--color-4);
   border: none;
   border-radius: 20px 20px 6px 20px;
@@ -419,7 +427,8 @@ p {
 
 .card-container 
 .card-right 
-.comment-container .edit-comment {
+.comment-container 
+.edit-comment {
         color: var(--color-2);
 }
 

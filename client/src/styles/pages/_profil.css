@@ -322,7 +322,7 @@
     }
   }
 
-  .popup-profil-container  .modal {
+  .popup-profil-container .modal{
     
     position: absolute;
     top: 10%;
@@ -336,12 +336,11 @@
     transform: scaleY(0);
     transform-origin: center;
     animation: modal .5s forwards;
-
-    
-    @keyframes modal {
-      to {
-        transform: scale(1) translate(-50%);
-      }
+  }
+  /**keyframe of .popup-profil-container .modal*/
+  @keyframes modal {
+    to {
+      transform: scale(1) translate(-50%);
     }
   }
 

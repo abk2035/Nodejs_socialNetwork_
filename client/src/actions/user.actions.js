@@ -1,5 +1,11 @@
-import { get_user, upload_picture,update_bio } from '../reducers/user.reducer';
+
 import axios from 'axios';
+import { 
+  get_user, 
+  upload_picture,
+  update_bio, 
+  follow_user,
+  unFollow_user } from '../reducers/user.reducer';
 
 
 
@@ -45,6 +51,36 @@ export const updateBio = (userId, bio) => {
     })
       .then((res) => {
         dispatch( update_bio( bio ) );
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
+export const followUser = (followerId, idToFollow) => {
+  return (dispatch) => {
+    return axios({
+      method: "patch",
+      url: `${process.env.REACT_APP_API_URL}api/user/follow/`+followerId,
+      data: { idToFollow }
+    })
+      .then((res) => {
+        console.log("execute follow functio...")
+        dispatch( follow_user( idToFollow ) );
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
+export const unfollowUser = (followerId, idToUnfollow) => {
+  return (dispatch) => {
+    return axios({
+      method: "patch",
+      url: `${process.env.REACT_APP_API_URL}api/user/unfollow/`+followerId,
+      data: { idToUnfollow }
+    })
+      .then((res) => {
+        console.log("execute unfollow ")
+        dispatch( unFollow_user( idToUnfollow ));
       })
       .catch((err) => console.log(err));
   };
