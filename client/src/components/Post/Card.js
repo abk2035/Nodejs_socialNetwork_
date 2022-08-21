@@ -6,14 +6,21 @@ import { selectUser } from '../../reducers/user.reducer';
 import { isEmpty, dateParser } from "../Utils";
 import  FollowHandler  from "../Profil/FollowHandler";
 import LikeButton from "../Post/LikeButton";
+import { updatePost } from '../../actions/posts.actions';
 
 function Card({ post }) {
-
+ const [isUpdated, setIsUpdated] = useState(false);
+ const [textUpdate, setTextUpdate] = useState(null);
  const [isLoading,setIsLoading] = useState(true);
  const { usersData } = useSelector( selectUsers );
  const { userData } = useSelector( selectUser );
  const [showComments , setShowComments] = useState ( false );
  const dispatch = useDispatch();
+
+ const  updateItem = ()=>{
+    if(textUpdate) dispatch ( updatePost(post._id, textUpdate) )
+    setIsUpdated( false );
+ }
 
  useEffect(() => {
   setTimeout(()=>{
@@ -56,7 +63,20 @@ function Card({ post }) {
                     </div>
                     <span>{ dateParser(post.createdAt) }</span> 
                 </div>
-                <p>{ post.message }</p>
+                {isUpdated === false && <p>{post.message}</p>}
+                {isUpdated && (
+                 <div className="update-post">
+                    <textarea
+                      defaultValue={ post.message }
+                      onChange={ (e) => setTextUpdate(e.target.value) }
+                     />
+                    <div className="button-container">
+                      <button className="btn" onClick={ updateItem }>
+                        Valider modification
+                      </button>
+                    </div>
+                 </div>
+                )}
                  {post.picture && (
                    <img src={post.picture} alt="card-pic" className="card-pic" />
                  )}
@@ -71,6 +91,13 @@ function Card({ post }) {
                       title={post._id}
                     ></iframe>
                   )}
+                  {userData._id === post.posterId && (
+                      <div className="button-container">
+                        <div onClick={() => setIsUpdated(!isUpdated)}>
+                          <img src="./img/icons/edit.svg" alt="edit" />
+                        </div>
+                      </div>
+                    )}
                   <div className="card-footer">
                     <div className="comment-icon">
                       <img

@@ -34,7 +34,6 @@ export const userReducer = createSlice({
 
                }
 
-
              }
 
 })

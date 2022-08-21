@@ -38,11 +38,24 @@ const postsReducer = createSlice({
           return post;
         })
         return {...state, posts : newPosts } ;
-       }
+       },
+       update_post :(state, action) => {
+        const { posts } = state ;
+        const newPosts = posts.map(( post ) => {
+          if(post._id === action.payload.postId){
+            return {
+             ...post,
+                 message: action.payload.message
+             }
+         }
+         return post;
+        });
+        return {...state, posts : newPosts } ;
     }
+  }
 })
 
 export const selectPosts = (state) => state.postsReducer ;
-export const { get_posts, like_post, unlike_post, get_all_posts } = postsReducer.actions ;
+export const { get_posts, like_post, unlike_post, get_all_posts, update_post} = postsReducer.actions ;
 
 export default postsReducer.reducer ;

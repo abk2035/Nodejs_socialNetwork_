@@ -1,4 +1,9 @@
-import { get_posts, like_post, unlike_post, get_all_posts } from "../reducers/posts.reducer";
+import { 
+ get_posts,
+ like_post, 
+ unlike_post, 
+ get_all_posts,
+ update_post } from "../reducers/posts.reducer";
 import axios from "axios";
 
 
@@ -40,6 +45,20 @@ export const getPosts = (num) => {
       })
         .then((res) => {
           dispatch( unlike_post({ postId, userId }) );
+        })
+        .catch((err) => console.log(err));
+    };
+  };
+
+  export const updatePost = (postId, message) => {
+    return (dispatch) => {
+      return axios({
+        method: "put",
+        url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
+        data: { message },
+      })
+        .then((res) => {
+          dispatch( update_post( { message, postId } ));
         })
         .catch((err) => console.log(err));
     };
